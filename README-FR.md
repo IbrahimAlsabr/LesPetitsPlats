@@ -1,6 +1,6 @@
 # LesPetitsPlats : une plateforme interactive de recettes de cuisine
 
-![Logo LesPetitsPlats](./assets/Logo.png)
+![Logo LesPetitsPlats](./assets/logo-md.png)
 
 [ Read this file in English](./README.md)
 
@@ -34,7 +34,7 @@ Le design de _LesPetitsPlats_ a été pensé pour offrir une expérience utilisa
 
 Voici quelques captures d'écran qui illustrent le résultat final du site :
 
-![Page d'accueil](./assets/HOME.png)
+![Page d'accueil](./assets/Home.png)
 
 Ces images donnent un aperçu du design interactif et réactif du site.
 
