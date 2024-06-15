@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Les Petits Plats</title>
+        <link rel="stylesheet" href="./css/main.css" />
+        <link rel="stylesheet" href="./css/normalize.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        />
+    </head>
+    <body>
+        <!-- ===*===*===*===*===*===*===*===*===*===*===*===*=== -->
+        <!--                  Start Landing Section              -->
+        <!-- ===*===*===*===*===*===*===*===*===*===*===*===*=== -->
+        <header>
+            <div class="cover-img">
+                <img src="./assets/landing-img.png" alt="landing-img" />
+                <h2>
+                    cherchez parmi plus de 1500 recettes du quotidien,simples et
+                    délicieuses
+                </h2>
+                <div class="logo">
+                    <img src="./assets/Logo.png" alt="Logo" />
+                </div>
+
+                <div class="search-input">
+                    <input
+                        type="search"
+                        name=""
+                        id="searchInput"
+                        placeholder="Rechercher une recette, un ingrédient, ..."
+                    />
+                </div>
+            </div>
+        </header>
+
+        <!-- ==*===*===*===* End Landing Section *===*===*===*== -->
+
+        <!-- ===*===*===*===*===*===*===*===*===*===*===*===*=== -->
+        <!--                  Start Filters Section              -->
+        <!-- ===*===*===*===*===*===*===*===*===*===*===*===*=== -->
+        <div class="container">
+            <section class="filters">
+                <!-- === === Ingrédients drop down === === -->
+                <div class="ingredients filter-box">
+                    <div class="dropdown-title">
+                        <p>Ingrédients</p>
+                        <i class="fas fa-angle-down"></i>
+                    </div>
+
+                    <ul style="visibility: hidden">
+                        <li>
+                            <input
+                                type="search"
+                                name="i"
+                                id="ingredients-search"
+                            />
+                        </li>
+                    </ul>
+                    <div class="selected"></div>
+                </div>
+
+                <!-- === === appareils drop down === === -->
+                <div class="appareils filter-box">
+                    <div class="dropdown-title">
+                        <p>Appareils</p>
+                        <i class="fas fa-angle-down"></i>
+                    </div>
+                    <ul style="visibility: hidden">
+                        <li>
+                            <input
+                                type="search"
+                                name="appareils"
+                                id="appareils-search"
+                            />
+                        </li>
+                    </ul>
+                    <div class="selected"></div>
+                </div>
+
+                <!-- === === ustensiles drop down === === -->
+                <div class="ustensiles filter-box">
+                    <div class="dropdown-title">
+                        <p>Ustensiles</p>
+                        <i class="fas fa-angle-down"></i>
+                    </div>
+                    <ul style="visibility: hidden">
+                        <li>
+                            <input
+                                type="search"
+                                name="ustensiles"
+                                id="ustensiles-search"
+                            />
+                        </li>
+                    </ul>
+                    <div class="selected"></div>
+                </div>
+            </section>
+
+            <section class="recettes-nbr">
+                <p>1500 recettes</p>
+            </section>
+        </div>
+
+        <div id="recipe-container" class="container"></div>
+        <script type="module" src="./scripts/index.js"></script>
+        <script type="module" src="./scripts/init_drop-down_lists.js"></script>
+        <script type="module" src="./scripts/filter.js"></script>
+    </body>
+</html>

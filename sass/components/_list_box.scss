@@ -1,0 +1,134 @@
+.container {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .filters {
+        width: 850px;
+        display: flex;
+        justify-content: space-around;
+
+        .filter-box {
+            position: relative;
+
+            .dropdown-title {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 150px;
+                padding: 20px;
+                padding-left: 25px;
+                border-radius: 10px;
+                background-color: $white-color;
+                font-size: 18px;
+                font-weight: 400;
+                p {
+                    margin: 0;
+                }
+            }
+        }
+
+        // custom the container of the content of drop down
+        ul {
+            z-index: 100;
+            width: 150px;
+            position: absolute;
+            top: 60px;
+            display: flex;
+            flex-direction: column;
+
+            overflow-y: auto;
+            max-height: 245px;
+
+            background-color: $white-color;
+            padding: 12px 10px;
+            width: 89%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        ul li:not(:first-child) {
+            padding: 5px 15px;
+            max-width: 100%;
+        }
+
+        ul li:not(:first-child):hover {
+            background-color: $main-color;
+            border-radius: 5px;
+        }
+
+        ul li input {
+            position: relative;
+            outline: none;
+            padding: 5px 10px;
+            max-width: 100%;
+            border: 1px solid $gray-color;
+            border-radius: 5px;
+        }
+
+        ul li:first-child:after {
+            content: "\1F50D";
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: absolute;
+            top: 15px;
+            right: 20px;
+
+            font-size: 18px;
+            font-family: "Segoe UI Symbol", Arial, sans-serif;
+            color: $gray-color;
+            background-color: $white-color;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            padding-bottom: 2px;
+            cursor: pointer;
+        }
+    }
+
+    .recettes-nbr p {
+        font-size: 30px;
+        font-weight: 800;
+    }
+}
+
+/* ===*===*===*===*===*===*===*===*===*=== */
+/*              Custom the scroll          */
+/* ===*===*===*===*===*===*===*===*===*=== */
+ul::-webkit-scrollbar-track {
+    background: white;
+}
+
+ul::-webkit-scrollbar-thumb {
+    background: #999;
+}
+
+ul::-webkit-scrollbar {
+    width: 4px;
+}
+.selected {
+    display: none;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+.selected span {
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+	padding: 5px 0;
+    background-color: $main-color;
+    color: $main-color-alt;
+}
+
+.selected span p {
+    width: 63%;
+}

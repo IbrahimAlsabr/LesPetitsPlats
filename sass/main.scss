@@ -1,0 +1,8 @@
+@import "./global/base";
+@import "./components/_header";
+@import "./components/_list_box";
+@import "./components/recipe_card";
+
+h1 {
+    color: $main-color-alt;
+}

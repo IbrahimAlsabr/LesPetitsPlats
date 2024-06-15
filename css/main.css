@@ -1,0 +1,345 @@
+@charset "UTF-8";
+/* --*--*--*--*--*--*--*--*--*--*--*--*--*--*--*-- */
+/*             Theme and Background Colors         */
+/* --*--*--*--*--*--*--*--*--*--*--*--*--*--*--*-- */
+body {
+  background-color: #ededed;
+  font-family: "Manrope", sans-serif;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+#recipe-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 40px;
+}
+
+header {
+  position: relative;
+}
+
+header .logo {
+  z-index: 2;
+  position: absolute;
+  padding: 50px 70px;
+  top: 0;
+}
+
+.cover-img {
+  min-width: 100%;
+}
+
+.cover-img > img {
+  width: 100%;
+  height: 650px;
+  object-fit: fill;
+}
+
+.cover-img h2 {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+  color: #ffd15b;
+  width: 900px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  font-size: 44px;
+  font-weight: 500;
+}
+
+.search-input {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.search-input input {
+  position: relative;
+  width: 954px;
+  height: 75px;
+  outline: none;
+  font-size: 30px;
+  padding-left: 28px;
+  padding-right: 28px;
+  border-radius: 10px;
+  border: none;
+}
+
+.search-input::after {
+  content: "🔍";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  font-size: 30px;
+  font-family: "Segoe UI Symbol", Arial, sans-serif;
+  color: white;
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  border-radius: 10px;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+
+.search-input input::placeholder {
+  color: #7a7a7a;
+  font-size: 25px;
+}
+
+.container {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container .filters {
+  width: 850px;
+  display: flex;
+  justify-content: space-around;
+}
+.container .filters .filter-box {
+  position: relative;
+}
+.container .filters .filter-box .dropdown-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px;
+  padding: 20px;
+  padding-left: 25px;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 18px;
+  font-weight: 400;
+}
+.container .filters .filter-box .dropdown-title p {
+  margin: 0;
+}
+.container .filters ul {
+  z-index: 100;
+  width: 150px;
+  position: absolute;
+  top: 60px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 245px;
+  background-color: white;
+  padding: 12px 10px;
+  width: 89%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.container .filters ul li:not(:first-child) {
+  padding: 5px 15px;
+  max-width: 100%;
+}
+.container .filters ul li:not(:first-child):hover {
+  background-color: #ffd15b;
+  border-radius: 5px;
+}
+.container .filters ul li input {
+  position: relative;
+  outline: none;
+  padding: 5px 10px;
+  max-width: 100%;
+  border: 1px solid #7a7a7a;
+  border-radius: 5px;
+}
+.container .filters ul li:first-child:after {
+  content: "🔍";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 18px;
+  font-family: "Segoe UI Symbol", Arial, sans-serif;
+  color: #7a7a7a;
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+.container .recettes-nbr p {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+/* ===*===*===*===*===*===*===*===*===*=== */
+/*              Custom the scroll          */
+/* ===*===*===*===*===*===*===*===*===*=== */
+ul::-webkit-scrollbar-track {
+  background: white;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: #999;
+}
+
+ul::-webkit-scrollbar {
+  width: 4px;
+}
+
+.selected {
+  display: none;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selected span {
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px 0;
+  background-color: #ffd15b;
+  color: #000000;
+}
+
+.selected span p {
+  width: 63%;
+}
+
+.recipe-card {
+  width: 380px;
+  height: 750px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 60px 80px 60px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3019607843);
+  transition: 0.3s;
+}
+
+.recipe-card:hover {
+  transform: translateY(-20px);
+  box-shadow: 0px -1.5px 7px 0px #ffd15b;
+}
+
+.recipe-image {
+  position: relative;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+}
+
+.recipe-image img {
+  width: 100%;
+  height: 253px;
+  display: block;
+  object-fit: cover;
+}
+
+.prep-time {
+  width: 50px;
+  text-align: center;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ffd700;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.9em;
+  color: black;
+}
+
+.recipe-content {
+  padding: 15px 30px;
+}
+
+.recipe-content h1 {
+  color: #000000;
+  font-family: "Anton";
+  letter-spacing: 1.1px;
+  font-size: 27px;
+}
+
+.recipe-content h2 {
+  color: #7a7a7a;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  letter-spacing: 1.1px;
+  font-family: "Manrope";
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.recipe-content p {
+  font-family: "Manrope";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  max-height: 85px;
+  overflow: hidden;
+}
+
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px 25px;
+}
+
+.ingredients-list li {
+  display: grid;
+  padding: 5px 0;
+}
+
+.ingredients-list li span:first-child {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.ingredients-list li span:last-child {
+  padding-top: 7px;
+  color: #7a7a7a;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.ingredients-list li:last-child {
+  border-bottom: none;
+}
+
+h1 {
+  color: #000000;
+}
+
+/*# sourceMappingURL=main.css.map */
