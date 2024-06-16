@@ -3,48 +3,13 @@ import { createRecipeCard } from "../scripts/components/recipe_card.js";
 import { extractRecipeElements } from "./init_drop-down_lists.js";
 import { myData } from "./index.js";
 
-const resultsContainer = document.getElementById("recipe-container");
-
-function displayResults(recipes, searchQuery = "") {
-    resultsContainer.innerHTML = "";
-
-    if (recipes.length === 0) {
-        resultsContainer.innerHTML = `
-			<h3>
-				Aucune recette ne contient ‘${searchQuery}’ vous pouvez chercher
-				«tarte aux pommes», «poisson», etc.
-			</h3>
-		`;
-        resultsContainer.style = `
-			display: flex;
-			justify-content: center;
-			margin: 60px auto;
-			width: 500px;
-			text-align: center;
-			letter-spacing: 1.5px;
-		`;
-
-        return;
-    }
-
-    resultsContainer.removeAttribute("style");
-	
-    recipes.forEach((recipe) => {
-        const recipeCard = createRecipeCard({
-            imageUrl: `./assets/imgs/${recipe.image}`,
-            prepTime: recipe.time,
-            title: recipe.name,
-            description: recipe.description,
-            ingredients: recipe.ingredients,
-        });
-        resultsContainer.appendChild(recipeCard);
-        resultsContainer.className = "found";
-    });
-}
-
+/* ---*---*---*---*---*---*---*---*---*---*---*---*---*---*--- */
+/*                   Start Handling Search input               */
+/* ---*---*---*---*---*---*---*---*---*---*---*---*---*---*--- */
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("searchInput");
 
+    // Adds event listener to handle input events on the search input
     searchInput.addEventListener("input", () => {
         const searchQuery = searchInput.value.toLowerCase();
         let filteredData = [];
@@ -66,16 +31,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
             displayResults(filteredData, searchQuery);
             extractRecipeElements(myData);
-            console.log(myData);
         }
     });
 });
 
-// ------------------------------ testing ------------------------------
+/* ---*---*---*---*---*---*---*---*---*---*---*---*---*---*--- */
+/*                      Start Handling Tag Input               */
+/* ---*---*---*---*---*---*---*---*---*---*---*---*---*---*--- */
+
 let ingredients = [];
 let appareils = [];
 let ustensiles = [];
 
+// Event listeners and functions for managing added and removed elements in categories
 document.addEventListener("elementAdded", function (event) {
     if (event.target.classList.contains("selected")) {
         const category = event.target.parentNode.className.split(" ")[0];
@@ -147,6 +115,16 @@ document.addEventListener("elementRemoved", function (event) {
     }
 });
 
+/* ---*---*---*---*---*---*---*---*---*---*---*---*---*---*--- */
+/*                      Utilities Functions                    */
+/* ---*---*---*---*---*---*---*---*---*---*---*---*---*---*--- */
+
+/**
+ * Returns the array corresponding to a specified category.
+ *
+ * @param {string} category - The category name ('ingredients', 'appareils', 'ustensiles').
+ * @returns {Array} The array linked to the given category.
+ */
 function getCategoryArray(category) {
     switch (category) {
         case "ingredients":
@@ -157,7 +135,13 @@ function getCategoryArray(category) {
             return ustensiles;
     }
 }
+// ----------------------------------------------------------------------------------- //
 
+/**
+ * Filters `myData` based on the given category and updates it with the filtered recipes.
+ *
+ * @param {string} category - The category (e.g., 'ingredients', 'ustensiles', 'appareils') to filter the recipes by.
+ */
 function filterRecipesByCategory(category) {
     let filteredRecipes = [];
     for (let i = 0; i < myData.length; i++) {
@@ -178,12 +162,27 @@ function filterRecipesByCategory(category) {
 
     updateFilteredRecipes(filteredRecipes);
 }
+// ----------------------------------------------------------------------------------- //
 
+/**
+ * Clears and updates the `myData` array with a new list of filtered recipes.
+ *
+ * @param {Array} filteredRecipes - The recipes to replace the existing data in `myData`.
+ */
 function updateFilteredRecipes(filteredRecipes) {
     myData.length = 0;
     filteredRecipes.forEach((filteredItem) => myData.push(filteredItem));
 }
+// ----------------------------------------------------------------------------------- //
 
+/**
+ * Extracts items from a recipe object based on the specified category. The categories
+ * can include 'ustensiles', 'ingredients', or other properties like 'appliance'.
+ *
+ * @param {Object} recipe - The recipe to extract data from.
+ * @param {string} category - The data category ('ustensiles', 'ingredients', 'appliance').
+ * @returns {Array|string} returns either an array of items (for 'ustensiles' and 'ingredients') or string (for 'appliance').
+ */
 function extractItemsOfRecipe(recipe, category) {
     if (category === "ustensiles") {
         return recipe.ustensils.map((element) => element.toLowerCase());
@@ -195,3 +194,50 @@ function extractItemsOfRecipe(recipe, category) {
         return recipe.appliance.toLowerCase();
     }
 }
+// ----------------------------------------------------------------------------------- //
+
+/**
+ * Displays search results or a no-results message in a dedicated container.
+ * Each matching recipe is shown using a card layout.
+ *
+ * @param {Array} recipes - Array of recipe objects to be displayed.
+ * @param {string} [searchQuery=""] - The search term used to filter recipes. Defaults to an empty string if not provided.
+ */
+function displayResults(recipes, searchQuery = "") {
+    const resultsContainer = document.getElementById("recipe-container");
+    resultsContainer.innerHTML = "";
+
+    if (recipes.length === 0) {
+        resultsContainer.innerHTML = `
+			<h3>
+				Aucune recette ne contient ‘${searchQuery}’ vous pouvez chercher
+				«tarte aux pommes», «poisson», etc.
+			</h3>
+		`;
+        resultsContainer.style = `
+			display: flex;
+			justify-content: center;
+			margin: 60px auto;
+			width: 500px;
+			text-align: center;
+			letter-spacing: 1.5px;
+		`;
+
+        return;
+    }
+
+    resultsContainer.removeAttribute("style");
+
+    recipes.forEach((recipe) => {
+        const recipeCard = createRecipeCard({
+            imageUrl: `./assets/imgs/${recipe.image}`,
+            prepTime: recipe.time,
+            title: recipe.name,
+            description: recipe.description,
+            ingredients: recipe.ingredients,
+        });
+        resultsContainer.appendChild(recipeCard);
+        resultsContainer.className = "found";
+    });
+}
+// ----------------------------------------------------------------------------------- //
