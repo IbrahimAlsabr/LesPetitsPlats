@@ -2,7 +2,7 @@
 
 ![Logo LesPetitsPlats](./assets/logo-md.png)
 
-[ Lire ce fichier en français](./README.md)
+[ Lire ce fichier en français](./README-FR.md)
 
 ## Description
 
