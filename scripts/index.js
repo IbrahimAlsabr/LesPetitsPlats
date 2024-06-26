@@ -17,7 +17,7 @@ recipes.forEach((recipe) => {
     });
     recipeCardDoic.appendChild(recipeCard);
 });
-console.log(myData);
+
 
 /* ---*---*---*---*---*---*---*---*---*---*---*---*---*---*---  */
 

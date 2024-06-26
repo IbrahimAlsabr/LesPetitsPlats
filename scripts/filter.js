@@ -15,28 +15,40 @@ document.addEventListener("DOMContentLoaded", () => {
         let filteredData = [];
 
         if (searchQuery.length >= 3 || searchQuery.length === 0) {
-            filteredData = recipes.filter(
-                (recipe) =>
+            let filteredData = [];
+            for (let i = 0; i < recipes.length; i++) {
+                let recipe = recipes[i];
+                let recipeMatches =
                     recipe.name.toLowerCase().includes(searchQuery) ||
-                    recipe.description.toLowerCase().includes(searchQuery) ||
-                    recipe.ingredients.some((ingredient) =>
-                        ingredient.ingredient
-                            .toLowerCase()
-                            .includes(searchQuery)
-                    )
-            );
+                    recipe.description.toLowerCase().includes(searchQuery);
+
+                if (!recipeMatches) {
+                    for (let j = 0; j < recipe.ingredients.length; j++) {
+                        let ingredient = recipe.ingredients[j].ingredient;
+                        if (ingredient.toLowerCase().includes(searchQuery)) {
+                            recipeMatches = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (recipeMatches) {
+                    filteredData.push(recipe);
+                }
+            }
 
             myData.length = 0;
             filteredData.forEach((filteredItem) => myData.push(filteredItem));
 
             displayResults(filteredData, searchQuery);
             extractRecipeElements(myData);
+            updateNbrOfRecettes(myData.length);
         }
     });
 });
 
 /* ---*---*---*---*---*---*---*---*---*---*---*---*---*---*--- */
-/*                      Start Handling Tag Input               */
+/*               Start Handling Search By Tag Input            */
 /* ---*---*---*---*---*---*---*---*---*---*---*---*---*---*--- */
 
 let ingredients = [];
@@ -72,6 +84,7 @@ document.addEventListener("elementAdded", function (event) {
             displayResults(myData);
         }
         extractRecipeElements(myData);
+        updateNbrOfRecettes(myData.length);
     }
 });
 
@@ -112,6 +125,7 @@ document.addEventListener("elementRemoved", function (event) {
 
         displayResults(myData);
         extractRecipeElements(myData);
+        updateNbrOfRecettes(myData.length);
     }
 });
 
@@ -241,3 +255,9 @@ function displayResults(recipes, searchQuery = "") {
     });
 }
 // ----------------------------------------------------------------------------------- //
+
+function updateNbrOfRecettes(nbrRecettes) {
+    document.querySelector(
+        ".recettes-nbr p"
+    ).innerHTML = `${nbrRecettes} Recettes`;
+}
