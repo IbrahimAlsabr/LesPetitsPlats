@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             displayResults(filteredData, searchQuery);
             extractRecipeElements(myData);
+            updateNbrOfRecettes(myData.length);
         }
     });
 });
@@ -72,6 +73,7 @@ document.addEventListener("elementAdded", function (event) {
             displayResults(myData);
         }
         extractRecipeElements(myData);
+        updateNbrOfRecettes(myData.length);
     }
 });
 
@@ -112,6 +114,7 @@ document.addEventListener("elementRemoved", function (event) {
 
         displayResults(myData);
         extractRecipeElements(myData);
+        updateNbrOfRecettes(myData.length);
     }
 });
 
@@ -241,3 +244,9 @@ function displayResults(recipes, searchQuery = "") {
     });
 }
 // ----------------------------------------------------------------------------------- //
+
+function updateNbrOfRecettes(nbrRecettes) {
+    document.querySelector(
+        ".recettes-nbr p"
+    ).innerHTML = `${nbrRecettes} Recettes`;
+}

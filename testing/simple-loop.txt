@@ -1,0 +1,21 @@
+let filteredData = [];
+for (let i = 0; i < recipes.length; i++) {
+	let recipe = recipes[i];
+	let recipeMatches =
+		recipe.name.toLowerCase().includes(searchQuery) ||
+		recipe.description.toLowerCase().includes(searchQuery);
+
+	if (!recipeMatches) {
+		for (let j = 0; j < recipe.ingredients.length; j++) {
+			let ingredient = recipe.ingredients[j].ingredient;
+			if (ingredient.toLowerCase().includes(searchQuery)) {
+				recipeMatches = true;
+				break;
+			}
+		}
+	}
+
+	if (recipeMatches) {
+		filteredData.push(recipe);
+	}
+}

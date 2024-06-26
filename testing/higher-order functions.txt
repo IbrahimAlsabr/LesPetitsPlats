@@ -1,0 +1,12 @@
+let filteredData = [];
+
+filteredData = recipes.filter(
+	(recipe) =>
+		recipe.name.toLowerCase().includes(searchQuery) ||
+		recipe.description.toLowerCase().includes(searchQuery) ||
+		recipe.ingredients.some((ingredient) =>
+			ingredient.ingredient
+				.toLowerCase()
+				.includes(searchQuery)
+		)
+);
